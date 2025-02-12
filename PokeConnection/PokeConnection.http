@@ -1,0 +1,6 @@
+@PokeConnection_HostAddress = http://localhost:5146
+
+GET {{PokeConnection_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
