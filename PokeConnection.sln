@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokeConnection.API", "PokeConnection\PokeConnection.API.csproj", "{7A0AAB5F-1254-42B0-AFA5-785DCFC728EC}"
 EndProject
@@ -10,6 +10,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokeConnection.Domain", "PokeConnection.Domain\PokeConnection.Domain.csproj", "{4916DFD3-8469-484F-B7BD-3A2A8B1533F0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokeConnection.Data", "PokeConnection.Data\PokeConnection.Data.csproj", "{6D20769F-C9C6-4771-B1E1-DC1766C2A4DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokeConnection.Tests", "PokeConnection.Tests\PokeConnection.Tests.csproj", "{C1D9FBCD-5D61-4E0C-BF9A-659CA4B71561}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokeConnection.External", "PokeConnection.External\PokeConnection.External.csproj", "{E7A178BA-8303-4945-A38B-80C63FC3C4F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,8 +37,19 @@ Global
 		{6D20769F-C9C6-4771-B1E1-DC1766C2A4DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D20769F-C9C6-4771-B1E1-DC1766C2A4DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D20769F-C9C6-4771-B1E1-DC1766C2A4DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1D9FBCD-5D61-4E0C-BF9A-659CA4B71561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1D9FBCD-5D61-4E0C-BF9A-659CA4B71561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1D9FBCD-5D61-4E0C-BF9A-659CA4B71561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1D9FBCD-5D61-4E0C-BF9A-659CA4B71561}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7A178BA-8303-4945-A38B-80C63FC3C4F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7A178BA-8303-4945-A38B-80C63FC3C4F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7A178BA-8303-4945-A38B-80C63FC3C4F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7A178BA-8303-4945-A38B-80C63FC3C4F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {332530F8-B20A-45E2-A211-60F65175674E}
 	EndGlobalSection
 EndGlobal
