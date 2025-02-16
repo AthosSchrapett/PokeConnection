@@ -9,7 +9,7 @@ PokeConnection é um projeto de estudos que tem como objetivo explorar diferente
 - xUnit (Testes automatizados)
 
 ## 📌 Objetivo
-Este projeto está em fase inicial e será expandido ao longo do tempo com novas funcionalidades e tecnologias. Atualmente, a implementação foca no uso do **HttpClientFactory** para gerenciar chamadas HTTP de forma eficiente e na utilização do **Polly** para melhorar a resiliência da API.
+Este projeto está em andamento e será expandido ao longo do tempo com novas funcionalidades e tecnologias.
 
 ## 🛠️ Implementações(Em construção)
 
