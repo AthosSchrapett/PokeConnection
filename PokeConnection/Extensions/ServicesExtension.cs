@@ -1,9 +1,14 @@
-﻿namespace PokeConnection.API.Extensions;
+﻿using PokeConnection.Application.Services;
+using PokeConnection.Domain.Interfaces;
+
+namespace PokeConnection.API.Extensions;
 
 public static class ServicesExtension
 {
-    public static IServiceCollection AddServices(this IServiceCollection services)
+    public static IServiceCollection AddServicesConfiguration(this IServiceCollection services)
     {
+        services.AddScoped<IPokemonService, PokemonService>();
+
         return services;
     }
 }

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PokeConnection.Domain.Interfaces;
 
 namespace PokeConnection.API.Controllers;
@@ -7,17 +6,17 @@ namespace PokeConnection.API.Controllers;
 [ApiController]
 public class PokemonController : ControllerBase
 {
-    private readonly IPokeApiService _pokeApiService;
+    private readonly IPokemonService _pokemonService;
 
-    public PokemonController(IPokeApiService pokeApiService)
+    public PokemonController(IPokemonService pokemonService)
     {
-        _pokeApiService = pokeApiService;
+        _pokemonService = pokemonService;
     }
 
     [HttpGet]
     public async Task<IActionResult> GetPokemonAsync(string pokemonName)
     {
-        var pokemon = await _pokeApiService.GetPokemonAsync(pokemonName);
+        var pokemon = await _pokemonService.GetPokemonAsync(pokemonName);
         
         if (pokemon is null)
         {

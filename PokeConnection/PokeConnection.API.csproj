@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\PokeConnection.Application\PokeConnection.Application.csproj" />
     <ProjectReference Include="..\PokeConnection.Domain\PokeConnection.Domain.csproj" />
+    <ProjectReference Include="..\PokeConnection.External\PokeConnection.External.csproj" />
   </ItemGroup>
 
 </Project>

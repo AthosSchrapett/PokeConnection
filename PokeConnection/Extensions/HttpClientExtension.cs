@@ -1,6 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using PokeConnection.Application.Services;
-using PokeConnection.Domain.Interfaces;
+﻿using PokeConnection.Application.Services;
+using PokeConnection.External.Interfaces;
 using Polly;
 using Polly.Extensions.Http;
 
@@ -20,7 +19,7 @@ public static class HttpClientExtension
         .AddPolicyHandler(HttpPolicyExtensions.HandleTransientHttpError()
             .CircuitBreakerAsync(2, TimeSpan.FromSeconds(30)));
 
-        services.AddScoped<IPokeApiService, PokeApiService>();
+        services.AddTransient<IPokeApiService, PokeApiService>();
 
         return services;
     }
