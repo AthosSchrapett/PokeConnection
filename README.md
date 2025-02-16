@@ -11,7 +11,7 @@ PokeConnection é um projeto de estudos que tem como objetivo explorar diferente
 ## 📌 Objetivo
 Este projeto está em fase inicial e será expandido ao longo do tempo com novas funcionalidades e tecnologias. Atualmente, a implementação foca no uso do **HttpClientFactory** para gerenciar chamadas HTTP de forma eficiente e na utilização do **Polly** para melhorar a resiliência da API.
 
-## 🛠️ Implementação Atual: HttpClientFactory + Polly
+## 🛠️ Implementações(Em construção)
 
 O **HttpClientFactory** foi implementado para facilitar a comunicação com APIs externas, garantindo reutilização eficiente de conexões.  
 
