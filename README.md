@@ -6,6 +6,7 @@ PokeConnection é um projeto de estudos que tem como objetivo explorar diferente
 - C# / .NET
 - HttpClientFactory
 - Polly (Retries e Circuit Breaker)
+- xUnit (Testes automatizados)
 
 ## 📌 Objetivo
 Este projeto está em fase inicial e será expandido ao longo do tempo com novas funcionalidades e tecnologias. Atualmente, a implementação foca no uso do **HttpClientFactory** para gerenciar chamadas HTTP de forma eficiente e na utilização do **Polly** para melhorar a resiliência da API.
@@ -21,15 +22,20 @@ Agora, o **Polly** foi adicionado para garantir maior estabilidade e resiliênci
 
 Essa abordagem protege a aplicação contra falhas transitórias e garante que as requisições HTTP sejam tratadas de forma eficiente.
 
+**Padrão Adapter**
+
+O Adapter converte o JSON completo recebido da PokeAPI para a entidade Pokemon (nome, tipos e habilidades), e também para o PokemonResponseDTO retornado pela API.
+
 ## 📄 Status do Projeto
 O projeto está em desenvolvimento e, no momento, conta com:
 - **HttpClientFactory** para gerenciamento de conexões HTTP.
 - **Polly** para resiliência com retries e circuit breaker.
+- **xUnit** para execução de testes automatizados.
 
 ## 🛠️ Próximos Passos
+- Conexão com bancos de dados (SQL e NoSQL).
 - Melhor tratamento de logs e monitoramento.  
-- Implementação de RabbitMQ para processamento assíncrono.  
-- Testes automatizados com xUnit.  
+- Implementação de RabbitMQ para processamento assíncrono. 
 - CI/CD e deploy automatizado.  
 
 ## 🤝 Contribuição
