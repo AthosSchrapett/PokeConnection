@@ -17,12 +17,6 @@ public class PokemonController : ControllerBase
     public async Task<IActionResult> GetPokemonAsync(string pokemonName)
     {
         var pokemon = await _pokemonService.GetPokemonAsync(pokemonName);
-        
-        if (pokemon is null)
-        {
-            return NotFound();
-        }
-
         return Ok(pokemon);
     }
 }

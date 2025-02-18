@@ -1,75 +1,39 @@
-﻿using Moq;
-using Moq.Protected;
+﻿using Microsoft.AspNetCore.Mvc.Testing;
+using PokeConnection.Domain.DTOs.Pokemon;
 using System.Net;
+using System.Net.Http.Json;
 
 namespace PokeConnection.Tests;
-public class PokeApiServiceTests
+public class PokeApiServiceTests : IClassFixture<WebApplicationFactory<Program>>
 {
-    [Fact]
-    public async Task GetPokemonAsync_RetornaPokemon_RespostaDaApiEhSucesso()
+    private readonly HttpClient _httpClient;
+
+    public PokeApiServiceTests(WebApplicationFactory<Program> factory)
     {
-        var jsonPath = Path.Combine(Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), @"..\..\..")), "TestsJSON", "pikachu.json");
-        var json = File.ReadAllText(jsonPath);
-
-        var handlerMock = new Mock<HttpMessageHandler>(MockBehavior.Strict);
-        handlerMock.Protected()
-            .Setup<Task<HttpResponseMessage>>(
-                "SendAsync",
-                ItExpr.IsAny<HttpRequestMessage>(),
-                ItExpr.IsAny<CancellationToken>()
-            )
-            .ReturnsAsync(new HttpResponseMessage
-            {
-                StatusCode = HttpStatusCode.OK,
-                Content = new StringContent(json)
-            });
-
-        var httpClientFactoryMock = new Mock<IHttpClientFactory>();
-        var httpClient = new HttpClient(handlerMock.Object)
-        {
-            BaseAddress = new Uri("https://pokeapi.co/api/v2/")
-        };
-
-        httpClientFactoryMock.Setup(_ => _.CreateClient("PokeApi")).Returns(httpClient);
-        var service = new PokeApiService(httpClientFactoryMock.Object);
-
-        PokemonResponseDTO? pokemon = await service.GetPokemonAsync("pikachu");
-
-        Assert.NotNull(pokemon);
-        Assert.Equal("pikachu", pokemon.name);
-        Assert.Equal(4, pokemon.height);
-        Assert.Equal(60, pokemon.weight);
-        //...
+        _httpClient = factory.CreateClient();
     }
 
-    [Fact]
-    public async Task GetPokemonAsync_RetornaNulo_QuandoApiFalha()
+    [Theory]
+    [InlineData("pikachu", HttpStatusCode.OK, "pikachu", "electric", null)]
+    [InlineData("unknown", HttpStatusCode.NotFound, null, null, null)]
+    public async Task GetPokemonAsync_ValidaRespostas(
+        string pokemonName, 
+        HttpStatusCode expectedStatus,
+        string? expectedName,
+        string? expectedType1,
+        string? expectedType2
+    )
     {
-        var handlerMock = new Mock<HttpMessageHandler>(MockBehavior.Strict);
+        var response = await _httpClient.GetAsync($"/api/Pokemon?pokemonName={pokemonName}");
+        Assert.Equal(expectedStatus, response.StatusCode);
 
-        handlerMock
-           .Protected()
-           .Setup<Task<HttpResponseMessage>>(
-               "SendAsync",
-               ItExpr.IsAny<HttpRequestMessage>(),
-               ItExpr.IsAny<CancellationToken>()
-           )
-           .ReturnsAsync(new HttpResponseMessage
-           {
-               StatusCode = HttpStatusCode.NotFound
-           });
-
-        var httpClientFactoryMock = new Mock<IHttpClientFactory>();
-        var httpClient = new HttpClient(handlerMock.Object)
+        if (response.IsSuccessStatusCode)
         {
-            BaseAddress = new Uri("https://pokeapi.co/api/v2/")
-        };
-
-        httpClientFactoryMock.Setup(_ => _.CreateClient("PokeApi")).Returns(httpClient);
-        var service = new PokeApiService(httpClientFactoryMock.Object);
-
-        var pokemon = await service.GetPokemonAsync("unknown");
-
-        Assert.Null(pokemon);
+            var result = await response.Content.ReadFromJsonAsync<PokemonResponseDTO>();
+            Assert.NotNull(result);
+            Assert.Equal(expectedName, result.Nome);
+            Assert.Equal(expectedType1, result.PrimeiroTipo);
+            Assert.Equal(expectedType2, result.SegundoTipo);
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using PokeConnection.Application.Adapter;
 using PokeConnection.Domain.DTOs.Pokemon;
+using PokeConnection.Domain.Exceptions;
 using PokeConnection.Domain.Interfaces;
 using PokeConnection.External.Interfaces;
 
@@ -18,6 +19,9 @@ public class PokemonService : IPokemonService
     {
         var pokemonResponse = await _pokeApiService.GetPokemonAsync(pokemonName);
         var pokemon = pokemonResponse?.ConvertToEntity();
+
+        if (pokemon is null)
+            throw new NaoEncontradoException();
 
         return pokemon?.ConvertToDTO();
     }

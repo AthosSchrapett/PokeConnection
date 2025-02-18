@@ -1,4 +1,5 @@
 using PokeConnection.API.Extensions;
+using PokeConnection.API.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,4 +27,10 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.UseMiddleware<HandleException>();
+
 app.Run();
+
+public partial class Program
+{
+}
