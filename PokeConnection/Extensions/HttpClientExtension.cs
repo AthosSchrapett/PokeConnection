@@ -2,6 +2,7 @@
 using PokeConnection.External.Interfaces;
 using Polly;
 using Polly.Extensions.Http;
+using System.Net;
 
 namespace PokeConnection.API.Extensions;
 
@@ -15,7 +16,16 @@ public static class HttpClientExtension
             client.DefaultRequestHeaders.Add("Accept", "application/json");
         })
         .AddPolicyHandler(HttpPolicyExtensions.HandleTransientHttpError()
-            .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))))
+            .OrResult(response => response.StatusCode == HttpStatusCode.RequestTimeout)
+        .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromMilliseconds(500),
+            (result, timeSpan, retryCount, context) =>
+            {
+                if (result.Result?.StatusCode == HttpStatusCode.NotFound)
+                {
+                    return;
+                }
+                Console.WriteLine($"Tentativa {retryCount} falhou. Tentando novamente em {timeSpan.TotalSeconds} segundos...");
+            }))
         .AddPolicyHandler(HttpPolicyExtensions.HandleTransientHttpError()
             .CircuitBreakerAsync(2, TimeSpan.FromSeconds(30)));
 
