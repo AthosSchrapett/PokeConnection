@@ -1,5 +1,6 @@
 using PokeConnection.API.Extensions;
 using PokeConnection.API.Middlewares;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,10 @@ builder.Services.AddControllers();
 builder.Services
     .AddHttpClientConfigurations()
     .AddServicesConfiguration();
+
+builder.Host
+    .AddSerilog()
+    .UseSerilog();
 
 builder.Services.AddOpenApi();
 
