@@ -7,6 +7,8 @@ PokeConnection é um projeto de estudos que tem como objetivo explorar diferente
 - HttpClientFactory
 - Polly (Retries e Circuit Breaker)
 - xUnit (Testes automatizados)
+- Serilog
+- Elasticsearch
 
 ## 📌 Objetivo
 Este projeto está em andamento e será expandido ao longo do tempo com novas funcionalidades e tecnologias.
@@ -31,6 +33,7 @@ O projeto está em desenvolvimento e, no momento, conta com:
 - **HttpClientFactory** para gerenciamento de conexões HTTP.
 - **Polly** para resiliência com retries e circuit breaker.
 - **xUnit** para execução de testes automatizados.
+- **Serilog e Elasticsearch** para gerenciamento de logs na aplicação.
 
 ## 🛠️ Próximos Passos
 - Conexão com bancos de dados (SQL e NoSQL).
