@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PokeConnection.Domain.Interfaces;
+using PokeConnection.Domain.Interfaces.Services;
 
 namespace PokeConnection.API.Controllers;
 [Route("api/[controller]")]

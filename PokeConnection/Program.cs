@@ -4,8 +4,10 @@ using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddRouting(map => map.LowercaseUrls = true);
 builder.Services.AddControllers();
 builder.Services
+    .AddDbConfigurations(builder.Configuration)
     .AddHttpClientConfigurations()
     .AddServicesConfiguration();
 

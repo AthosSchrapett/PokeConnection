@@ -1,5 +1,5 @@
-﻿using PokeConnection.Application.Services;
-using PokeConnection.External.Interfaces;
+﻿using PokeConnection.External.Interfaces;
+using PokeConnection.External.Serviços;
 using Polly;
 using Polly.Extensions.Http;
 using System.Net;

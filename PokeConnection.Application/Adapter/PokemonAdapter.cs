@@ -11,8 +11,7 @@ public static class PokemonAdapter
         return new Pokemon
         (
             pokemonResponse.name,
-            pokemonResponse.types[0].type.name,
-            pokemonResponse.types.Count > 1 ? pokemonResponse.types[1].type.name : null,
+            [.. pokemonResponse.types.Select(type => new Tipo(type.type.name))],
             [.. pokemonResponse.abilities.Select(ability => new Habilidade(ability.ability.name))]
         );
     }
@@ -22,8 +21,8 @@ public static class PokemonAdapter
         return new PokemonResponseDTO
         (
             pokemon.Nome,
-            pokemon.PrimeiroTipo,
-            pokemon.SegundoTipo
+            pokemon.Tipos[0].Nome,
+            pokemon.Tipos.Count > 1 ? pokemon.Tipos[1].Nome : null
         );
     }
 }

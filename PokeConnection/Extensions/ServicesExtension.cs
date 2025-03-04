@@ -1,5 +1,5 @@
 ﻿using PokeConnection.Application.Services;
-using PokeConnection.Domain.Interfaces;
+using PokeConnection.Domain.Interfaces.Services;
 
 namespace PokeConnection.API.Extensions;
 

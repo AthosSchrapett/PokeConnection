@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using PokeConnection.External.Responses.Relational;
 
 namespace PokeConnection.External.Responses;
 public class PokemonResponse
@@ -117,13 +118,7 @@ public class Form
 public class GameIndex
 {
     public int game_index { get; set; }
-    public Version version { get; set; }
-}
-
-public class Generation
-{
-    public string name { get; set; }
-    public string url { get; set; }
+    public GameVersion version { get; set; }
 }
 
 public class GenerationI
@@ -331,12 +326,6 @@ public class Silver
     public string front_shiny { get; set; }
 }
 
-public class Species
-{
-    public string name { get; set; }
-    public string url { get; set; }
-}
-
 public class Sprites
 {
     public string back_default { get; set; }
@@ -384,16 +373,10 @@ public class UltraSunUltraMoon
     public object front_shiny_female { get; set; }
 }
 
-public class Version
-{
-    public string name { get; set; }
-    public string url { get; set; }
-}
-
 public class VersionDetail
 {
     public int rarity { get; set; }
-    public Version version { get; set; }
+    public GameVersion version { get; set; }
 }
 
 public class VersionGroup
